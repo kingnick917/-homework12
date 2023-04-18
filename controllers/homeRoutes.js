@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Movie } = require('../models');
+const { User } = require('../models');
 const withAuth = require('../utils/auth');
 
 // Prevent non logged in users from viewing the homepage
@@ -45,38 +45,6 @@ router.get('/login', (req, res) => {
 });
 
 
-router.get('/movie/:id', withAuth, async (req, res) => {
-  try {
-    const dbMovieData = await Movie.findByPk(req.params.id, {
-      include: [
-        {
-          model: Movie,
-          attributes: [
-            'id',
-            'imdb',
-            'title',
-            'year',
-            'rating',
-            'released',
-            'genre',
-            'writer',
-            'actors',
-            'plot',
-            'language',
-            'awards',
-            'poster',
-          ],
-        },
-      ],
-    });
-
-    const movie = dbMovieData.get({ plain: true });
-    res.render('movie', { movie, loggedIn: req.session.loggedIn });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
 
 
 module.exports = router;
