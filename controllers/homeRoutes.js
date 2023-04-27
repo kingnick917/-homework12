@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User,Blog } = require('../models');
 const withAuth = require('../utils/auth');
 
 // Prevent non logged in users from viewing the homepage
@@ -34,7 +34,7 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
-router.get('/login', (req, res) => {
+router.get('/login',  async(req, res) => {
   // If a session exists, redirect the request to the homepage
   if (req.session.logged_in) {
     res.redirect('/');
@@ -43,8 +43,22 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+router.get(`/dashoard`, async (req, res) => {
+  const BlogData = await Blog.findAll({
+    include:[User]
+  });
+  console.log(BlogData)
 
-
-
+  if (req.session.logged_in) {
+    res.render('dashoard',{BlogData});
+    return;
+  }
+})
+router.get(`/homepage`, (req, res) => {
+  if (req.session.logged_in) {
+    res.render('homepage');
+    return;
+  }
+})
 
 module.exports = router;

@@ -4,7 +4,8 @@
         <ul class="search-container">
             <li><button id="logout">Log Out</button></li>
             <li><button id="movieHistory">dashboard</button></li>
-            <li><button id="logout">home</button></li>
+            <li><a href="/homepage"><button id="logout">home</button></a></li>
+            <li><button id="add_tab">Add Tab</button></li>
         </ul>
             
      </div>
@@ -16,7 +17,30 @@
         </div>
     </div>
     <button id="saveBtn" class="hidden">Save</button>
+     
+<div id="dialog" title="Tab data">
+  <form>
+    <fieldset class="ui-helper-reset">
+      <label for="tab_title">Title</label>
+      <input type="text" name="tab_title" id="tab_title" value="Tab Title" class="ui-widget-content ui-corner-all">
+      <label for="tab_content">Content</label>
+      <textarea name="tab_content" id="tab_content" class="ui-widget-content ui-corner-all">Tab content</textarea>
+    </fieldset>
+  </form>
 </div>
+ 
+{{#each BlogData as |Blog|}}
+<div>
+ <h2>
+  {{blog.title}}
+ </h2>
+ <p>
+  {{blog.information}}
+ </p>
 
-<script src="js/dashoard"></script>
+</div>
+{{/each}}
+
+<script src="js/dashoard.js"></script>
+<script src="js/logout.js"></script>
 
