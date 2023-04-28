@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 
   router.post('/', async (req, res) => {
     try {
-      const BlogData = await Blog.create(req.body);
+      const BlogData = await Blog.create({...req.body,User_id:req.session.user_id});
       res.status(200).json(BlogData);
     } catch (err) {
       console.log(err)

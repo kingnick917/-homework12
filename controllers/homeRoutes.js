@@ -49,8 +49,10 @@ router.get(`/dashoard`, async (req, res) => {
   });
   console.log(BlogData)
 
+  const blogs = BlogData.map((blog) => blog.get({ plain: true  }));
+  
   if (req.session.logged_in) {
-    res.render('dashoard',{BlogData});
+    res.render('dashoard',{blogs});
     return;
   }
 })

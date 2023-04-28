@@ -1,23 +1,35 @@
 <div class="wrapper ">
-    <div class="logo">
-         <h2 class=".navbar ul li button">dashboard</h2>
-        <ul class="search-container">
-            <li><button id="logout">Log Out</button></li>
-            <li><button id="movieHistory">dashboard</button></li>
-            <li><a href="/homepage"><button id="logout">home</button></a></li>
-            <li><button id="add_tab">Add Tab</button></li>
-        </ul>
-            
-     </div>
-        
-    </div>
-    <div class="container">
-        <div class="result-container">
-            <div class="result-grid" id="result-grid"></div>
-        </div>
-    </div>
-    <button id="saveBtn" class="hidden">Save</button>
-     
+  <div class="logo">
+    <h2 class=".navbar ul li button">dashboard</h2>
+    <ul class="search-container">
+      <li><button id="logout">Log Out</button></li>
+      <li><button id="movieHistory">dashboard</button></li>
+      <li><a href="/homepage"><button id="logout">home</button></a></li>
+      <li><button id="add_tab">Add Tab</button></li>
+    </ul>
+
+  </div>
+{{#each blogs as |blog|}}
+<div>
+  <h2 class="logo2">
+    {{blog.title}}
+  </h2>
+  <p class="logo">
+    {{blog.information}}
+  </p>
+  <p class="logo2">Created by {{blog.user.name}} on {{format_date blog.createdAt}}</p>
+
+</div>
+{{/each}}
+
+</div>
+<div class="container">
+  <div class="result-container">
+    <div class="result-grid" id="result-grid"></div>
+  </div>
+</div>
+<button id="saveBtn" class="hidden">Save</button>
+
 <div id="dialog" title="Tab data">
   <form>
     <fieldset class="ui-helper-reset">
@@ -28,19 +40,5 @@
     </fieldset>
   </form>
 </div>
- 
-{{#each BlogData as |Blog|}}
-<div>
- <h2>
-  {{blog.title}}
- </h2>
- <p>
-  {{blog.information}}
- </p>
-
-</div>
-{{/each}}
-
 <script src="js/dashoard.js"></script>
 <script src="js/logout.js"></script>
-

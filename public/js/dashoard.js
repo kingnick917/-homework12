@@ -51,7 +51,11 @@ function newTab() {
       "title":tab_title,
       "information": tab_content
     }),
-  });
+  }).then(()=>{
+    window.location.reload()
+  })
+  
+  
   var label = tabTitle.val() || "Tab " + tabCounter,
     id = "tabs-" + tabCounter,
     li = $(tabTemplate.replace(/#\{href\}/g, "#" + id).replace(/#\{label\}/g, label)),
