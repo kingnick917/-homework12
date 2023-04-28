@@ -10,3 +10,4 @@ this is the place where you can go and look at people blogs
 ![Regex](./assets/Capture3.PNG)
 
 ## deployed link
+https://sheltered-sea-32750.herokuapp.com
